@@ -1,14 +1,11 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-)
+import "github.com/gin-gonic/gin"
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello from Golang + Docker!")
+	r := gin.Default()
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message": "Hello from Docker!"})
 	})
-	fmt.Println("Server running on port 8080")
-	http.ListenAndServe(":8080", nil)
+	r.Run(":8080")
 }
