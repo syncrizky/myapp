@@ -10,7 +10,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 
 # Download module (cached layer)
-RUN go mod download
+
 
 # Copy semua file ke container
 COPY . .
